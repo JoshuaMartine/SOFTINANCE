@@ -1,5 +1,8 @@
-name = "joshua"
+name = "caballo"
 
-apellido = " rochet"
+apellido = " homosexual "
 
-print("sus nombres son: " + name + apellido )
+lugar = "de las montañas"
+
+print("Usted es un : " + name + apellido + lugar )
+
