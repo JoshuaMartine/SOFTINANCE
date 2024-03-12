@@ -1,9 +1,18 @@
-name = "caballo"
+import sys
+from PyQt6.QtWidgets import QApplication, QWidget
 
-apellido = " homosexual "
+class wnd(QWidget):
 
-lugar = "de las montañas"
+    def __init__(self):
+        super().__init__()
+        self.inicializarUI()
 
-print("Usted es un : " + name + apellido + lugar )
-print("esto es del front")
+    def inicializarUI(self):
+        self.setGeometry(1366,765,250,250)
+        self.setWindowTitle("ROSSE")
+        self.show()
 
+if  __name__ == "__main__":
+    app = QApplication(sys.argv)
+    ventana = wnd() 
+    sys.exit(app.exec())
