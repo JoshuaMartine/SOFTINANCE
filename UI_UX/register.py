@@ -13,7 +13,6 @@ root.title("ROSSE AI")
 root.resizable(False, False)
 root.configure(background="black")
 root.iconbitmap("a.ico")
-
 set_appearance_mode( " dark " )
 
 # Función para centrar la ventana en la pantalla
@@ -28,8 +27,7 @@ def center_window(window, width, height):
 window_width = 1000
 window_height = 600
 center_window(root, window_width, window_height)
-
-       
+  
 def on_enter(event):
     iniciarSesionBB.configure(text_color=azul) 
 
@@ -58,22 +56,19 @@ subText.place(x=520, y=120)
 #correo
 tituloCorreo = CTkLabel(root, text="Correo", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 tituloCorreo.place(x=545, y=180)
-
 correo = CTkEntry(root, font=("sans serif", 16), bg_color="black",  border_color=azul, fg_color=negro, width=380, height=40, corner_radius=15)
 correo.place(x=520, y=210)
 
 #contraseña
-tituloContraseña = CTkLabel(root, text="Contraseña", show="*", font=("Helvetica bold",20), bg_color=negro, text_color="white")
+tituloContraseña = CTkLabel(root, text="Contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 tituloContraseña.place(x=545, y=280)
-
-contraseña = CTkEntry(root, font=("sans serif", 16), border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
+contraseña = CTkEntry(root, font=("sans serif", 16), show="*", border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
 contraseña.place(x=520, y=310)
 
 #Repetir contraseña
 rTituloContraseña = CTkLabel(root, text="Confirmar contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 rTituloContraseña.place(x=545, y=380)
-
-rContraseña = CTkEntry(root, font=("sans serif", 16), border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
+rContraseña = CTkEntry(root, font=("sans serif", 16), show="*",  border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
 rContraseña.place(x=520, y=410)
 
 #boton de inicio de sesion
@@ -93,30 +88,22 @@ iniciarSesionBB.bind("<Button-1>", lambda event: login())
 # Cargar imagen
 imagen = PhotoImage(file="a.png")
 imagen = imagen.subsample(15,15)  
-
 mailLogo = PhotoImage(file="email.png")
 mailLogo = mailLogo.subsample(25,25)
-
 passLogo = PhotoImage(file="bloquear.png")
 passLogo = passLogo.subsample(25,25)
-
 rose = PhotoImage(file="rose.png")
-
 
 # Mostrar imagen en la interfaz gráfica
 
 imagen_label1 = CTkLabel(root, image=mailLogo, text="", bg_color=negro)
 imagen_label1.place(x=520, y=180)
-
 imagen_label3 = CTkLabel(root, image=rose, text="", bg_color=negro)
 imagen_label3.place(x=0, y=0)
-
 imagen_label = CTkLabel(root, image=imagen, text="", bg_color="black")
 imagen_label.place(x=20, y=20)
-
 imagen_label2 = CTkLabel(root, image=passLogo, text="", bg_color=negro)
 imagen_label2.place(x=520, y=280)
-
 imagen_label2 = CTkLabel(root, image=passLogo, text="", bg_color=negro)
 imagen_label2.place(x=520, y=380)
 

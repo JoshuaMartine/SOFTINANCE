@@ -35,16 +35,12 @@ def registrarse():
     ruta_completa = os.path.join(directorio_actual, archivo_a_ejecutar)
     os.system(f"python {ruta_completa}")
     root.destroy()
-
-
        
 def on_enter(event):
     registrarseB.configure(text_color=azul) 
 
 def on_leave(event):
-    registrarseB.configure(text_color="white") 
-    
-
+    registrarseB.configure(text_color="white")  
         
 #fondo del las opciones de inicio de sesion
 frame = CTkFrame(root, width=500, height=745, fg_color=negro)
@@ -61,14 +57,12 @@ subText.place(x=20, y=120)
 #correo
 tituloCorreo = CTkLabel(root, text="Correo", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 tituloCorreo.place(x=45, y=210)
-
 correo = CTkEntry(root, font=("sans serif", 16), bg_color="black",  border_color=azul, fg_color=negro, width=380, height=40, corner_radius=15)
 correo.place(x=20, y=240)
 
 #contraseña
 tituloContraseña = CTkLabel(root, text="Contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 tituloContraseña.place(x=45, y=310)
-
 contraseña = CTkEntry(root, font=("sans serif", 16), show="*", border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
 contraseña.place(x=20, y=340)
 
@@ -89,27 +83,20 @@ registrarseB.bind("<Button-1>", lambda event: registrarse())
 # Cargar imagen
 imagen = PhotoImage(file="a.png")
 imagen = imagen.subsample(15,15)  
-
 mailLogo = PhotoImage(file="email.png")
 mailLogo = mailLogo.subsample(25,25)
-
 passLogo = PhotoImage(file="bloquear.png")
 passLogo = passLogo.subsample(25,25)
-
 rose = PhotoImage(file="rose.png")
-
 
 # Mostrar imagen en la interfaz gráfica
 
 imagen_label1 = CTkLabel(root, image=mailLogo, text="", bg_color=negro)
 imagen_label1.place(x=20, y=210)
-
 imagen_label3 = CTkLabel(root, image=rose, text="", bg_color=negro)
 imagen_label3.place(x=500, y=0)
-
 imagen_label = CTkLabel(root, image=imagen, text="", bg_color="black")
 imagen_label.place(x=20, y=20)
-
 imagen_label2 = CTkLabel(root, image=passLogo, text="", bg_color=negro)
 imagen_label2.place(x=20, y=310)
 
