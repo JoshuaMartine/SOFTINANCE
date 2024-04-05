@@ -69,7 +69,7 @@ correo.place(x=20, y=240)
 tituloContraseña = CTkLabel(root, text="Contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 tituloContraseña.place(x=45, y=310)
 
-contraseña = CTkEntry(root, font=("sans serif", 16), border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
+contraseña = CTkEntry(root, font=("sans serif", 16), show="*", border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
 contraseña.place(x=20, y=340)
 
 #boton de inicio de sesion

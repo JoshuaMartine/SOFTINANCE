@@ -63,7 +63,7 @@ correo = CTkEntry(root, font=("sans serif", 16), bg_color="black",  border_color
 correo.place(x=520, y=210)
 
 #contraseña
-tituloContraseña = CTkLabel(root, text="Contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
+tituloContraseña = CTkLabel(root, text="Contraseña", show="*", font=("Helvetica bold",20), bg_color=negro, text_color="white")
 tituloContraseña.place(x=545, y=280)
 
 contraseña = CTkEntry(root, font=("sans serif", 16), border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
