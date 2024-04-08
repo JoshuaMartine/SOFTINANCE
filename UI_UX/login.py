@@ -1,6 +1,5 @@
 from customtkinter import *
 from tkinter import PhotoImage
-from PIL import Image
 import subprocess
 import os
 
@@ -30,11 +29,14 @@ window_height = 600
 center_window(root, window_width, window_height)
 
 def registrarse():
+    root.destroy()
     archivo_a_ejecutar = "register.py"
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
     ruta_completa = os.path.join(directorio_actual, archivo_a_ejecutar)
     os.system(f"python {ruta_completa}")
-    root.destroy()
+
+
+   
        
 def on_enter(event):
     registrarseB.configure(text_color=azul) 
@@ -80,6 +82,7 @@ registrarseB.bind("<Enter>", on_enter)
 registrarseB.bind("<Leave>", on_leave)
 registrarseB.bind("<Button-1>", lambda event: registrarse())
 
+
 # Cargar imagen
 imagen = PhotoImage(file="a.png")
 imagen = imagen.subsample(15,15)  
@@ -90,7 +93,6 @@ passLogo = passLogo.subsample(25,25)
 rose = PhotoImage(file="rose.png")
 
 # Mostrar imagen en la interfaz gráfica
-
 imagen_label1 = CTkLabel(root, image=mailLogo, text="", bg_color=negro)
 imagen_label1.place(x=20, y=210)
 imagen_label3 = CTkLabel(root, image=rose, text="", bg_color=negro)

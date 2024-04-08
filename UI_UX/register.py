@@ -35,11 +35,12 @@ def on_leave(event):
     iniciarSesionBB.configure(text_color="white") 
     
 def login():
+    root.destroy()
     archivo_a_ejecutar = "login.py"
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
     ruta_completa = os.path.join(directorio_actual, archivo_a_ejecutar)
     os.system(f"python {ruta_completa}")
-    root.destroy()
+    
         
 #fondo del las opciones de inicio de sesion
 frame = CTkFrame(root, width=500, height=745, fg_color=negro)
