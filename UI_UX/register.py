@@ -58,6 +58,11 @@ def login():
     ruta_completa = os.path.join(directorio_actual, archivo_a_ejecutar)
     os.system(f"python {ruta_completa}")
 
+def on_enter(event):
+    iniciarSesionBB.configure(text_color=azul)
+
+def on_leave(event):
+    iniciarSesionBB.configure(text_color="white")
 
 # Botones para registro e inicio de sesión
 #fondo del las opciones de inicio de sesion
@@ -74,19 +79,19 @@ subText.place(x=520, y=120)
 
 #correo
 tituloCorreo = CTkLabel(root, text="Correo", font=("Helvetica bold",20), bg_color=negro, text_color="white")
-tituloCorreo.place(x=545, y=180)
+tituloCorreo.place(x=550, y=180)
 correo = CTkEntry(root, font=("sans serif", 16), bg_color="black",  border_color=azul, fg_color=negro, width=380, height=40, corner_radius=15)
 correo.place(x=520, y=210)
 
 #contraseña
 tituloContraseña = CTkLabel(root, text="Contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
-tituloContraseña.place(x=545, y=280)
+tituloContraseña.place(x=550, y=280)
 contraseña = CTkEntry(root, font=("sans serif", 16), show="*", border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
 contraseña.place(x=520, y=310)
 
 #Repetir contraseña
 rTituloContraseña = CTkLabel(root, text="Confirmar contraseña", font=("Helvetica bold",20), bg_color=negro, text_color="white")
-rTituloContraseña.place(x=545, y=380)
+rTituloContraseña.place(x=550, y=380)
 rContraseña = CTkEntry(root, font=("sans serif", 16), show="*",  border_color=azul, fg_color=negro, width=380, bg_color="black", height=40, corner_radius=15)
 rContraseña.place(x=520, y=410)
 
@@ -129,5 +134,9 @@ imagen_label2.place(x=520, y=380)
 #texto del logo
 nombreLogo = CTkLabel(root, text="ROSSE", text_color=azul, bg_color="black", font=("Audiowide", 15))
 nombreLogo.place(x=70, y=30)
+
+iniciarSesionBB.bind("<Enter>", on_enter)
+iniciarSesionBB.bind("<Leave>", on_leave)
+iniciarSesionBB.bind("<Button-1>", lambda event: registrarse())
 
 root.mainloop()
