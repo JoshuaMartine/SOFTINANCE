@@ -43,7 +43,7 @@ def registrarse():
     guardar_registro()
 
 def insertar_usuario(correo, contraseña):
-    conn = sql.connect("Rose.db")
+    conn = sql.connect("./BD/Rose.db")
     cursor = conn.cursor()
     instruccion = f"INSERT INTO registrarse (correo, contraseña) VALUES ('{correo}', '{contraseña}')"
     cursor.execute(instruccion)
@@ -109,13 +109,13 @@ iniciarSesionBB.bind("<Button-1>", lambda event: login())
 iniciarSesionBB.place(x=590, y=530)
 
 # Cargar imagen
-imagen_pil = Image.open("a.png").resize((40, 40), Image.LANCZOS)  # Redimensionar la imagen
+imagen_pil = Image.open("./imagenes/a.png").resize((40, 40), Image.LANCZOS)  # Redimensionar la imagen
 imagen_tk = ImageTk.PhotoImage(imagen_pil)
-mailLogo_pil = Image.open("email.png").resize((25, 25), Image.LANCZOS)  # Redimensionar la imagen
+mailLogo_pil = Image.open("./imagenes/email.png").resize((25, 25), Image.LANCZOS)  # Redimensionar la imagen
 mailLogo_tk = ImageTk.PhotoImage(mailLogo_pil)
-passLogo_pil = Image.open("bloquear.png").resize((25, 25), Image.LANCZOS)  # Redimensionar la imagen
+passLogo_pil = Image.open("./imagenes/bloquear.png").resize((25, 25), Image.LANCZOS)  # Redimensionar la imagen
 passLogo_tk = ImageTk.PhotoImage(passLogo_pil)
-rose_pil = Image.open("rose.png")   # Redimensionar la imagen
+rose_pil = Image.open("./imagenes/rose.png")   # Redimensionar la imagen
 rose_tk = ImageTk.PhotoImage(rose_pil)
 
 # Mostrar imagen en la interfaz gráfica

@@ -31,12 +31,12 @@ center_window(root, window_width, window_height)
 
 # Crear base de datos y tabla si no existen
 def createDB():
-    conn = sql.connect("Rose.db")
+    conn = sql.connect("./BD/Rose.db")
     conn.commit()
     conn.close()
 
 def createTable():
-    conn = sql.connect("Rose.db")
+    conn = sql.connect("./BD/Rose.db")
     cursor = conn.cursor()
 
     cursor.execute(
@@ -50,7 +50,7 @@ def createTable():
     conn.close()
 
 def insertRow(correo, contraseña):
-    conn = sql.connect("Rose.db")
+    conn = sql.connect("./BD/Rose.db")
     cursor = conn.cursor()
     instruccion = f"INSERT INTO usuarios VALUES ('{correo}', '{contraseña}')"
     cursor.execute(instruccion)
@@ -67,7 +67,7 @@ def iniciarSesion():
     contraseña_input = contraseña.get()
 
     # Conectar a la base de datos
-    conn = sql.connect("Rose.db")
+    conn = sql.connect("./BD/Rose.db")
     cursor = conn.cursor()
 
     # Consultar la base de datos para verificar las credenciales
