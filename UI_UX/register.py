@@ -43,7 +43,7 @@ def registrarse():
     guardar_registro()
 
 def insertar_usuario(correo, contraseña):
-    conn = sql.connect("Rose.db")
+    conn = sql.connect("./BD/Rose.db")
     cursor = conn.cursor()
     instruccion = f"INSERT INTO registrarse (correo, contraseña) VALUES ('{correo}', '{contraseña}')"
     cursor.execute(instruccion)
