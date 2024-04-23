@@ -11,7 +11,6 @@ negro = "#000000"
 root = CTk()
 root.title("ROSSE AI")
 root.resizable(False, False)
-root.configure(background="black")
 root.iconbitmap("./imagenes/a.ico")
 
 set_appearance_mode("dark")
