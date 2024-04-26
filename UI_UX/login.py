@@ -60,6 +60,7 @@ if __name__ == "__main__":
     createDB()
     createTable()
     insertRow("Administrador", "Admin")
+import subprocess
 
 def iniciarSesion():
     correo_input = correo.get()
@@ -79,6 +80,10 @@ def iniciarSesion():
     # Verificar si se encontró un usuario con las credenciales proporcionadas
     if usuario:
         messagebox.showinfo("Éxito", "Inicio de sesión exitoso")
+        # Redirigir al menú principal
+        subprocess.Popen(["python", "./UI_UX/main.py"])
+        # Cerrar la ventana de inicio de sesión
+        root.withdraw()
     else:
         messagebox.showerror("Error", "Correo o contraseña incorrectos")
 
