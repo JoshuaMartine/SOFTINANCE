@@ -1,5 +1,4 @@
-import tkinter
-import tkinter.messagebox
+
 import customtkinter
 from PIL import Image, ImageTk
 
@@ -30,7 +29,7 @@ class App(customtkinter.CTk):
         image = Image.open(image_path)
         image = image.resize((25, 20))
         photo = ImageTk.PhotoImage(image)
-        new_chat_icon = customtkinter.CTkLabel(self.sidebar_frame, image=photo, text="")
+        new_chat_icon = customtkinter.CTkLabel(self.sidebar_frame, image=photo, text=" Nuevo Chat", compound='left')
         new_chat_icon.grid(row=0, column=0, padx=20, pady=(10, 10))
 
         # create another icon
@@ -41,19 +40,16 @@ class App(customtkinter.CTk):
         another_icon = customtkinter.CTkLabel(self.sidebar_frame, image=photo, text="")
         another_icon.grid(row=0, column=3, padx=20, pady=(10, 10))
 
-        # logo label
-        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="new chat", font=customtkinter.CTkFont(size=12, weight="bold"))
-        self.logo_label.grid(row=0, column=1, padx=20, pady=(10, 10))
+        
 
-        # create auser icon
+        # create user icon
         image_path = "./imagenes/user.png"
         image = Image.open(image_path)
         image = image.resize((20, 20))
         photo = ImageTk.PhotoImage(image)
-        another_icon = customtkinter.CTkLabel(self.sidebar_frame, image=photo, text="")
+        another_icon = customtkinter.CTkLabel(self.sidebar_frame, image=photo, text="    username@fulanito", compound='left')
         another_icon.grid(row=5, column=0, padx=20, pady=(10, 10))
-        self.username = customtkinter.CTkLabel(self.sidebar_frame, text="username@fulanito", font=customtkinter.CTkFont(size=15, weight="bold"))
-        self.username.grid(row=5, column=1, padx=20, pady=(10, 10))
+       
 
         # create main entry and button
         self.entry = customtkinter.CTkEntry(self, placeholder_text="Habla con ROSSE")
@@ -62,11 +58,9 @@ class App(customtkinter.CTk):
         # create a btn enviar
         image_path = "./imagenes/enviar.png"
         image = Image.open(image_path)
-        image = image.rotate(90)
         image = image.resize((20, 20))
         photo = ImageTk.PhotoImage(image)
-        self.main_button_1 = customtkinter.CTkButton(master=self, fg_color="#00c4cc", corner_radius=20, height=40, width=40,  hover_color=("gray75", "gray20"), text="", image=photo)
-        self.main_button_1.image = image
+        self.main_button_1 = customtkinter.CTkButton(master=self, fg_color="#00c4cc", corner_radius=20, height=40, width=6,  hover_color=("gray75", "gray20"), text="", image=photo)
         self.main_button_1.grid(row=3, column=3, padx=(20, 20), pady=(20, 20), sticky="nsew")
 
         # crear botón de micrófono pequeño y redondo
@@ -74,16 +68,38 @@ class App(customtkinter.CTk):
         image = Image.open(image_path)
         image = image.resize((20, 20))
         photo = ImageTk.PhotoImage(image)
-        self.microphone_button = customtkinter.CTkButton(self, fg_color="#00c4cc", corner_radius=20, height=30, width=30,text="", image=photo)
+        self.microphone_button = customtkinter.CTkButton(self, fg_color="#00c4cc", corner_radius=20, height=40, width=4,text="",  hover_color=("gray75", "gray20"), image=photo)
         self.microphone_button.image = image
         self.microphone_button.grid(row=3, column=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
 
         # create textbox
         self.textbox = customtkinter.CTkTextbox(self, width=1000, height=650)
         self.textbox.grid(row=0, column=1, columnspan=4, padx=(40, 40), pady=(40, 10), sticky="nsew")
+       
+        # establecer textbox en solo lectura
+        self.textbox.configure(state="disabled")
 
-        # set default values
-        self.textbox.insert("0.0", "CTkTextbox\n\n" + "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n\n" * 2)
+        # create image and text to insert into textbox
+        image_path = "./imagenes/a.png"
+        image = Image.open(image_path)
+        image = image.resize((350, 300))
+        photo = ImageTk.PhotoImage(image)
+        text = "¿Cómo puedo ayudarte hoy?"
+
+        # create a label to display the image and text
+        self.label = customtkinter.CTkLabel(self, text=text, image=photo, compound="top")
+        self.label.grid(row=0, column=1, columnspan=4, padx=(40, 40), pady=(40, 10), sticky="nsew")
+
+        # configure the font and weightof the text
+        self.label.configure(font=("Arial", 24))
+
+        # schedule the deletion of the label after 3 seconds
+        self.after(10000, self.delete_label)
+
+    def delete_label(self):
+        # delete the label
+        self.label.destroy()
+
 
 if __name__ == "__main__":
     app = App()
