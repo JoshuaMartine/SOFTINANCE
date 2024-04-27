@@ -5,17 +5,50 @@ from tkinter import ttk
 from math import cos, sin, radians, pi
 import numpy as np
 import pyaudio
+import time
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 
+class AnimatedBoxes:
+    def __init__(self, root):
+        self.root = root
+        self.canvas = CTkCanvas(root, width=300, height=200, bg=azulFondo, highlightbackground=azulFondo)
+        self.canvas.place(x=540, y=230)
+
+        # Crear cuadros
+        self.boxes = [
+            self.canvas.create_rectangle(50, 75, 100, 125, fill="#606060"),
+            self.canvas.create_rectangle(110, 75, 160, 125, fill="#606060"),
+            self.canvas.create_rectangle(170, 75, 220, 125, fill="#606060"),
+            self.canvas.create_rectangle(230, 75, 280, 125, fill="#606060")
+        ]
+        
+        self.current_box = 0
+        self.move_up = True
+        self.animate()
+
+    def animate(self):
+        # Ciclo que mueve un cuadro a la vez
+        move_distance = -2 if self.move_up else 1  # Reducir el movimiento para una animación más suave
+        self.canvas.move(self.boxes[self.current_box], 0, move_distance)
+
+        # Actualizar cuadro actual y dirección
+        self.current_box = (self.current_box + 1) % 4
+        if self.current_box == 0:
+            self.move_up = not self.move_up
+
+        # Llama a sí mismo después de un tiempo más corto para una animación más fluida
+        self.root.after(50, self.animate)
+
+
 # Obtener el tamaño de la pantalla
 user32 = ctypes.windll.user32
 screen_width = user32.GetSystemMetrics(0)
 screen_height = user32.GetSystemMetrics(1)
-azulFondo = "#031e35"
+azulFondo = "#1A1A1A"
 azulEnfoque = "#00c4cc"
 
 #creación y configuración de la ventana
@@ -85,6 +118,16 @@ def talk(event):
             canvas.coords(bars[i], bar_x, bar_y, bar_x + bar_width, bar_y + bar_height)
         
         root.after(10, update_visualizer)
+        
+        def terminarH(event):
+            canvas.destroy()
+            app = AnimatedBoxes(root)
+            
+
+
+ 
+            
+        canvas.bind("<Button-1>", terminarH)
 
     update_visualizer()
 
