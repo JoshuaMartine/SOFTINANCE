@@ -91,7 +91,7 @@ class App(customtkinter.CTk):
         self.label.grid(row=0, column=1, columnspan=4, padx=(40, 40), pady=(40, 10), sticky="nsew")
 
         # configure the font and weightof the text
-        self.label.configure(font=("Arial", 24))
+        self.label.configure(font=("Arial black", 24))
 
         # schedule the deletion of the label after 3 seconds
         self.after(10000, self.delete_label)
