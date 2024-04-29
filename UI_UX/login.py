@@ -28,38 +28,6 @@ window_width = 1000
 window_height = 600
 center_window(root, window_width, window_height)
 
-# Crear base de datos y tabla si no existen
-def createDB():
-    conn = sql.connect("./BD/Rose.db")
-    conn.commit()
-    conn.close()
-
-def createTable():
-    conn = sql.connect("./BD/Rose.db")
-    cursor = conn.cursor()
-
-    cursor.execute(
-        """CREATE TABLE IF NOT EXISTS usuarios (
-            correo TEXT,
-            contraseña TEXT
-            )"""
-    )
-
-    conn.commit()
-    conn.close()
-
-def insertRow(correo, contraseña):
-    conn = sql.connect("./BD/Rose.db")
-    cursor = conn.cursor()
-    instruccion = f"INSERT INTO usuarios VALUES ('{correo}', '{contraseña}')"
-    cursor.execute(instruccion)
-    conn.commit()
-    conn.close()
-
-if __name__ == "__main__":
-    createDB()
-    createTable()
-
 def iniciarSesion():
     correo_input = correo.get()
     contraseña_input = contraseña.get()
