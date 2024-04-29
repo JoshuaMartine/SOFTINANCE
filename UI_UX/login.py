@@ -59,8 +59,6 @@ def insertRow(correo, contraseña):
 if __name__ == "__main__":
     createDB()
     createTable()
-    insertRow("Administrador", "Admin")
-import subprocess
 
 def iniciarSesion():
     correo_input = correo.get()
@@ -71,17 +69,17 @@ def iniciarSesion():
     cursor = conn.cursor()
 
     # Consultar la base de datos para verificar las credenciales
-    cursor.execute("SELECT * FROM usuarios WHERE correo=? AND contraseña=?", (correo_input, contraseña_input))
-    usuario = cursor.fetchone()
+    cursor.execute("SELECT * FROM registrarse WHERE correo=? AND contraseña=?", (correo_input, contraseña_input))
+    registrarse = cursor.fetchone()
 
     # Cerrar la conexión a la base de datos
     conn.close()
 
     # Verificar si se encontró un usuario con las credenciales proporcionadas
-    if usuario:
+    if registrarse:
         messagebox.showinfo("Éxito", "Inicio de sesión exitoso")
-        # Redirigir al menú principal
-        subprocess.Popen(["python", "./UI_UX/main.py"])
+        # Redirigir al menú principal pasando el correo como argumento
+        subprocess.Popen(["python", "./UI_UX/main.py", correo_input])
         # Cerrar la ventana de inicio de sesión
         root.withdraw()
     else:
