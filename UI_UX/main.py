@@ -6,6 +6,7 @@ import google.generativeai as genai
 import key
 import tkinter as tk
 from tkinter import Listbox
+import os
 
 # Configuración de la apariencia y el tema
 customtkinter.set_appearance_mode("Dark")  # Modos: "System" (estándar), "Dark", "Light"
@@ -80,10 +81,28 @@ class App(customtkinter.CTk):
     def create_send_button(self):
         self.send_button = self.create_button("./imagenes/enviar.png", "", self.send_to_api, 20, 20)
         self.send_button.grid(row=3, column=3, padx=(20, 20), pady=(20, 20), sticky="nsew")
+    
+    
 
+    #AQUI ES DONDE ESTA LA CONEXION DEL BOTON
     def create_microphone_button(self):
-        self.microphone_button = self.create_button("./imagenes/microphone.png", "", None, 20, 20)
-        self.microphone_button.grid(row=3, column=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
+     self.microphone_button = self.create_button("./imagenes/microphone.png", "", self.run_test_py, 20, 20)
+     self.microphone_button.grid(row=3, column=4, padx=(20, 20), pady=(20, 20), sticky="nsew")
+
+    def run_test_py(self):
+     import subprocess
+     import sys
+    
+     # Construir la ruta absoluta al archivo
+     script_path = os.path.join(os.path.dirname(__file__), 'test.py')
+    
+     # Verificar si el archivo existe antes de intentar ejecutarlo
+     if os.path.exists(script_path):
+        # Llamar al script de Python de manera segura
+        subprocess.run([sys.executable, script_path])
+     else:
+        print(f"Error: No se encontró el archivo {script_path}")
+    #AQUI TERMINA LA CONEXION DEL BOTON
 
     def create_button(self, path, text, command, width, height):
         image = Image.open(path)
