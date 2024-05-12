@@ -6,6 +6,7 @@ import google.generativeai as genai
 import key
 import tkinter as tk
 from tkinter import Text, END
+import os
 
 # Configuración de la apariencia y el tema
 customtkinter.set_appearance_mode("Dark")  # Modos: "System" (estándar), "Dark", "Light"
